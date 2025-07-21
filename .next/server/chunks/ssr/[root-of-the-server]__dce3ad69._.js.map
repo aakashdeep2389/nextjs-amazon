@@ -1,0 +1,6 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 13, "column": 0}, "map": {"version":3,"sources":["file:///C:/Aakash%20Folder/nextjs-amazon/app/pages/test.tsx"],"sourcesContent":["\"use client\"\r\nimport { useState, useEffect } from \"react\";\r\n\r\nconst fetchData = () => new Promise((r) => setTimeout(r(Date.now()), 100));\r\n\r\nconst MyComponent = () => {\r\n  const [result, setResult] = useState();\r\n  const data = fetchData().then((value) => {\r\n    setResult(value)\r\n  }); // Issue is here\r\n  \r\n  return (\r\n    <div>\r\n      {result === data.toString() ? ( // 'data' is a Promise object here, not the resolved value\r\n        <div>hello</div>\r\n      ) : (\r\n        <div>good bye</div>\r\n      )}\r\n      mount\r\n    </div>\r\n  );\r\n};\r\n\r\nexport default MyComponent;"],"names":[],"mappings":";;;;AACA;AADA;;;AAGA,MAAM,YAAY,IAAM,IAAI,QAAQ,CAAC,IAAM,WAAW,EAAE,KAAK,GAAG,KAAK;AAErE,MAAM,cAAc;IAClB,MAAM,CAAC,QAAQ,UAAU,GAAG,CAAA,GAAA,qMAAA,CAAA,WAAQ,AAAD;IACnC,MAAM,OAAO,YAAY,IAAI,CAAC,CAAC;QAC7B,UAAU;IACZ,IAAI,gBAAgB;IAEpB,qBACE,8OAAC;;YACE,WAAW,KAAK,QAAQ,mBACvB,8OAAC;0BAAI;;;;;yEAEL,8OAAC;0BAAI;;;;;;YACL;;;;;;;AAIR;uCAEe","debugId":null}}]
+}

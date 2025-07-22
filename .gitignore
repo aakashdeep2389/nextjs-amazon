@@ -1,8 +1,9 @@
-# Nestjs specific
+# Build and dependency folders
 /dist
 /node_modules
 /build
 /tmp
+.next
 
 # Logs
 logs
@@ -18,7 +19,8 @@ lerna-debug.log*
 .env.development
 .env.test
 .env.production
+.env.local     
 
-# temp directory
+# temp directories
 .temp
 .tmp

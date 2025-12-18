@@ -3,3 +3,4 @@ export const APP_SLOGAN = process.env.NEXT_PUBLIC_APP_SLOGAN || 'Spend less, sav
 export const APP_DESCRIPTION =
   process.env.NEXT_PUBLIC_APP_DESCRIPTION || 'An Amazon clone build with Nextjs and Mongodb';
 export const PAGE_SIZE = Number(process.env.PAGE_SIZE || 9);
+export const FREE_SHIPPING_MIN_PRICE = Number(process.env.FREE_SHIPPING_MIN_PRICE || 35);

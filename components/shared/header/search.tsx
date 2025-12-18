@@ -12,11 +12,7 @@ import { APP_NAME } from '@/lib/constants'
 const categories = ['men', 'women', 'kids', 'accessories']
 export default async function Search() {
   return (
-    <form
-      action='/search'
-      method='GET'
-      className='flex  items-stretch h-10'
-    >
+    <form action='/search' method='GET' className='flex  items-stretch h-10'>
       <Select name='category'>
         <SelectTrigger className='w-auto h-full dark:border-gray-200 bg-gray-100 text-black border-r  rounded-r-none rounded-l-md'>
           <SelectValue placeholder='All' />
@@ -43,5 +39,5 @@ export default async function Search() {
         <SearchIcon className='w-6 h-6' />
       </button>
     </form>
-  )
+  );
 }

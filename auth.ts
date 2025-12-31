@@ -1,3 +1,4 @@
+import Google from 'next-auth/providers/google';
 import { MongoDBAdapter } from '@auth/mongodb-adapter';
 import bcrypt from 'bcryptjs';
 import CredentialsProvider from 'next-auth/providers/credentials';
@@ -30,6 +31,9 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
   },
   adapter: MongoDBAdapter(client),
   providers: [
+    Google({
+      allowDangerousEmailAccountLinking: true,
+    }),
     CredentialsProvider({
       credentials: {
         email: {
@@ -77,7 +81,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth({
       }
       return token;
     },
-    session: async ({ session, user, trigger, token }) => { 
+    session: async ({ session, user, trigger, token }) => {
       session.user.id = token.sub as string;
       session.user.role = token.role as string;
       session.user.name = token.name;

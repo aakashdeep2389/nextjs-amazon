@@ -8,3 +8,9 @@ vercel app - https://nextjs-amazon-kg7wxeh6n-aakashs-projects-13b5a929.vercel.ap
 npm i zod - used data validation package
 
 
+vercel main URl- https://nextjs-amazon-taupe.vercel.app/
+https://nextjs-amazon-git-develop-aakashs-projects-13b5a929.vercel.app/
+
+
+BUG
+1. when u create a new account and using the already exist email then in first try only if email already exist application will get you sign in and redirect to dashboard without asking you to actual sign-in

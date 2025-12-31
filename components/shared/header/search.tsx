@@ -1,5 +1,6 @@
 import { SearchIcon } from 'lucide-react'
 import { Input } from '@/components/ui/input'
+import styles from './header.module.css';
 
 import {
   Select,
@@ -7,14 +8,16 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '@/components/ui/select'
-import { APP_NAME } from '@/lib/constants'
-const categories = ['men', 'women', 'kids', 'accessories']
+} from '@/components/ui/select';
+import { APP_NAME } from '@/lib/constants';
+const categories = ['men', 'women', 'kids', 'accessories'];
 export default async function Search() {
   return (
     <form action='/search' method='GET' className='flex  items-stretch h-10'>
       <Select name='category'>
-        <SelectTrigger className='w-auto h-c-auto dark:border-gray-200 bg-gray-100 text-black border-r  rounded-r-none rounded-l-md'>
+        <SelectTrigger
+          className={`w-auto dark:border-gray-200 bg-gray-100 text-black border-r  rounded-r-none rounded-l-md ${styles.heightAuto}`}
+        >
           <SelectValue placeholder='All' />
         </SelectTrigger>
         <SelectContent position='popper'>

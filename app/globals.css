@@ -135,7 +135,8 @@
   .h2-bold {
     @apply font-bold text-lg lg:text-xl;
   }
+  
 }
-.h-c-auto{
-  height: auto;
-}
+/* .h-c-auto {
+    height: auto;
+  } */

@@ -5,6 +5,7 @@ import { loadEnvConfig } from '@next/env';
 import data from '@/lib/data';
 import { connectToDatabase } from '.';
 import Product from './models/product.model';
+import User from './models/user.model';
 
 // Load env variables for standalone script execution
 loadEnvConfig(cwd());
@@ -18,23 +19,30 @@ const seedDatabase = async () => {
     if (process.env.NODE_ENV === 'production') {
       throw new Error('❌ Seeding is not allowed in production!');
     }
+    const { products, users } = data;
 
     // Connect to DB
     await connectToDatabase(process.env.MONGODB_URI);
     console.log('✅ Connected to MongoDB');
 
+    await User.deleteMany();
+    const createdUsers = await User.insertMany(users);
     // Wipe collection
     await Product.deleteMany();
     console.log('🗑️  Cleared Product collection');
 
     // Insert sample data
-    const createdProducts = await Product.insertMany(data.products);
+    const createdProducts = await Product.insertMany(products);
     console.log(`📦 Inserted ${createdProducts.length} products`);
+    console.log(`📦 Inserted ${createdUsers.length} User`);
 
     console.log('🎉 Database seeded successfully');
+
   } catch (error) {
+
     console.error('❌ Failed to seed database:', error);
     process.exitCode = 1;
+
   } finally {
     // Gracefully close DB connection
     await mongoose.disconnect();
@@ -44,7 +52,6 @@ const seedDatabase = async () => {
 
 // Run the seeding script
 seedDatabase();
-
 
 // const main = async () => {
 //   try {

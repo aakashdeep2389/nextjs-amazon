@@ -136,3 +136,6 @@
     @apply font-bold text-lg lg:text-xl;
   }
 }
+.h-c-auto{
+  height: auto;
+}

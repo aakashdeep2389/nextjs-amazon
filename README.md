@@ -14,3 +14,6 @@ https://nextjs-amazon-git-develop-aakashs-projects-13b5a929.vercel.app/
 
 BUG
 1. when u create a new account and using the already exist email then in first try only if email already exist application will get you sign in and redirect to dashboard without asking you to actual sign-in
+
+1/2/26
+google auth connected with dev.aakash000

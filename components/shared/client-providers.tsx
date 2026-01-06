@@ -1,15 +1,10 @@
 'use client'
 import React from 'react'
 import useCartSidebar from '@/hooks/use-cart-sidebar'
-import CartSidebar from './cart-sidebar'
-import { Toaster } from 'sonner';
+import CartSidebar from './cart-sidebar';
 
-export default function ClientProviders({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const isCartSidebarOpen = useCartSidebar()
+export default function ClientProviders({ children }: { children: React.ReactNode }) {
+  const isCartSidebarOpen = useCartSidebar();
 
   return (
     <>
@@ -21,7 +16,7 @@ export default function ClientProviders({
       ) : (
         <div>{children}</div>
       )}
-      <Toaster />
+      {/* <Toaster /> */}
     </>
-  )
+  );
 }

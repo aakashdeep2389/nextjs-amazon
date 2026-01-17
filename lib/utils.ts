@@ -1,14 +1,14 @@
-import { clsx, type ClassValue } from "clsx"
-import { twMerge } from "tailwind-merge"
+import { clsx, type ClassValue } from 'clsx';
+import { twMerge } from 'tailwind-merge';
 
 export function cn(...inputs: ClassValue[]) {
-  return twMerge(clsx(inputs))
+  return twMerge(clsx(inputs));
 }
 
 export const formatNumberWithDecimal = (num: number): string => {
-  const [int, decimal] = num.toString().split('.')
-  return decimal ? `${int}.${decimal.padEnd(2, '0')}` : int
-}
+  const [int, decimal] = num.toString().split('.');
+  return decimal ? `${int}.${decimal.padEnd(2, '0')}` : int;
+};
 // PROMPT: [ChatGTP] create toSlug ts arrow function that convert text to lowercase, remove non-word, non-whitespace, non-hyphen characters, replace whitespace, trim leading hyphens and trim trailing hyphens
 
 export const toSlug = (text: string): string =>
@@ -17,53 +17,48 @@ export const toSlug = (text: string): string =>
     .replace(/[^\w\s-]+/g, '')
     .replace(/\s+/g, '-')
     .replace(/^-+|-+$/g, '')
-    .replace(/-+/g, '-')
-
+    .replace(/-+/g, '-');
 
 const CURRENCY_FORMATTER = new Intl.NumberFormat('en-US', {
   currency: 'USD',
   style: 'currency',
   minimumFractionDigits: 2,
-})
+});
 export function formatCurrency(amount: number) {
-  return CURRENCY_FORMATTER.format(amount)
+  return CURRENCY_FORMATTER.format(amount);
 }
 
-const NUMBER_FORMATTER = new Intl.NumberFormat('en-US')
+const NUMBER_FORMATTER = new Intl.NumberFormat('en-US');
 export function formatNumber(number: number) {
-  return NUMBER_FORMATTER.format(number)
+  return NUMBER_FORMATTER.format(number);
 }
 export const round2 = (num: number) => Math.round((num + Number.EPSILON) * 100) / 100;
 
 export const generateId = () =>
   Array.from({ length: 24 }, () => Math.floor(Math.random() * 10)).join('');
 
-
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const formatError = (error: any): string => {
   if (error.name === 'ZodError') {
     const fieldErrors = Object.keys(error.errors).map((field) => {
-      const errorMessage = error.errors[field].message
-      return `${error.errors[field].path}: ${errorMessage}` // field: errorMessage
-    })
-    return fieldErrors.join('. ')
+      const errorMessage = error.errors[field].message;
+      return `${error.errors[field].path}: ${errorMessage}`; // field: errorMessage
+    });
+    return fieldErrors.join('. ');
   } else if (error.name === 'ValidationError') {
     const fieldErrors = Object.keys(error.errors).map((field) => {
-      const errorMessage = error.errors[field].message
-      return errorMessage
-    })
-    return fieldErrors.join('. ')
+      const errorMessage = error.errors[field].message;
+      return errorMessage;
+    });
+    return fieldErrors.join('. ');
   } else if (error.code === 11000) {
-    const duplicateField = Object.keys(error.keyValue)[0]
-    return `${duplicateField} already exists`
+    const duplicateField = Object.keys(error.keyValue)[0];
+    return `${duplicateField} already exists`;
   } else {
     // return 'Something went wrong. please try again'
-    return typeof error.message === 'string'
-      ? error.message
-      : JSON.stringify(error.message)
+    return typeof error.message === 'string' ? error.message : JSON.stringify(error.message);
   }
-}
-
+};
 
 export function calculateFutureDate(days: number) {
   const currentDate = new Date();
@@ -125,3 +120,7 @@ export const formatDateTime = (dateString: Date) => {
     timeOnly: formattedTime,
   };
 };
+
+export function formatId(id: string) {
+  return `..${id.substring(id.length - 6)}`;
+}
